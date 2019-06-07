@@ -7,12 +7,23 @@ import java.util.Locale;
  */
 public class TestBench
 {
+   static void showPerimeterArea(GeometricInformation primitive){
+       System.out.println("Aire de la forme "+primitive.getArea());
+       System.out.println("Périmètre de la forme "+primitive.getPerimeter());
+       System.out.println("");
+   }
+    
    static String test()
    {
        Locale.setDefault(Locale.US);
        Circle circle1 = new Circle(100,100, 10) ;
+       showPerimeterArea(circle1);
+
        Circle circle2 = circle1.makeCopy(); // Deep copy of cicle1
-       circle2.translate(0,200); // We move independently circle2 with respect to circle1
+       circle2.translate(0,200);// We move independently circle2 with respect to circle1
+       circle2.scale(2);
+       showPerimeterArea(circle2);
+       
        Square rect1   = new Square(1,1,100,100) ; // My squares are rectangle... WTF
        
        MainSheet sheet = new MainSheet(500,500);
