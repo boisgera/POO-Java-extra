@@ -1,5 +1,8 @@
+# General
 *.bak
 
 # Java
 *.class
 
+# SVG
+demo1.svg
