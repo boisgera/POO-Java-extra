@@ -1,6 +1,6 @@
 import static utils.Utils.*;
 
-public class App {    
+public class Sandbox {    
     public static void main(String[] args) {
         String source = read("App.java");
         println(source);
