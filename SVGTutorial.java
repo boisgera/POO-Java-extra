@@ -134,12 +134,20 @@ public class SVGTutorial {
         String[][] svgAttributes = {
             {"version", "1.1"},
             {"baseProfile", "full"},
+            {"width", "300"},
+            {"height", "200"},
             {"xmlns", "http://www.w3.org/2000/svg"}
         };
         String[][] rectAttributes = {
             {"width", "100%"}, 
             {"height", "100%"}, 
             {"fill", "red"}
+        };
+        String[][] circleAttributes = {
+            {"cx", "150"},
+            {"cy", "100"},
+            {"r", "80"}, 
+            {"fill", "green"}
         };
         String[][] textAttributes = {
             {"x", "150"}, 
@@ -148,12 +156,15 @@ public class SVGTutorial {
             {"text-anchor", "middle"},
             {"fill", "white"}
         };
+
         String elt = svg(svgAttributes,
             rect(rectAttributes),
-
+            circle(circleAttributes),
             text(textAttributes, 
-                "SVG")
+                "SVG"
+            )
         );
         println(elt);
+        write("demo1.svg", elt);
     }
 }
