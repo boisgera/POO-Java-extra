@@ -89,7 +89,7 @@ public class Utils {
         return string.length();
     }
 
-    public static <Type>  int length(Type[] array) {
+    public static <Type> int length(Type[] array) {
         return array.length;
     }
 

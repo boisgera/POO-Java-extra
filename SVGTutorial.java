@@ -12,6 +12,12 @@ import static utils.Utils.*;
 //
 // </svg>
 
+// TODO:
+//
+//   - Error handling in element (for attributes)
+//
+//   - Attributes adder (with several types for the value).
+
 public class SVGTutorial {
 
     public static String[][] attrs(String allAttrs) {
@@ -91,6 +97,7 @@ public class SVGTutorial {
         return element(name, noAttrs);
     }
 
+    // TODO: fill the version, baseProfile and xmlns by default values ?
     public static String svg(String[][] attributes, String... children) {
         return element("svg", attributes, true, children);
     }
