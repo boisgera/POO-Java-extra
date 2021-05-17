@@ -10,7 +10,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+// TODO: simple error handling (RuntimeException only, message)
+
 public class Utils {
+
+    // error or exit ? With optional error code?
+    public static void error(String message) {
+        throw new RuntimeException(message);
+    }
 
     public static String str(boolean b) {
         return Boolean.valueOf(b).toString();

@@ -40,12 +40,34 @@ public class SVGTutorial {
         return result;
     }
 
+    public static void checkAttributes(String[][] attributes) {
+        for (String[] kv: attributes) {
+            if (kv.length != 2) {
+                String message = "attributes should contain pairs of strings. ";
+                message += "One item of length " + kv.length + " != 2 has been found.";
+                error(message);
+            } else {
+                for (String string: kv) {
+                    if (string == null) {
+                        String message = "attributes: null string found.";
+                        error(message);
+                    }
+                }
+            }
+
+        }
+    }
+
     public static String element(
         String name, 
         String[][] attributes, 
         boolean indent, 
         String... children) 
     {
+        
+
+        checkAttributes(attributes);
+
         String result = "";
         result += "<" + name + " " + attrString(attributes) + ">";
         for (String child: children) {
@@ -136,7 +158,40 @@ public class SVGTutorial {
         return element("text");
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
+        String[][] rectAttributes1 = {
+            {"width"},
+            {"100%"}, 
+            {"height"}, 
+            {"100%"}, 
+            {"fill"}, 
+            {"red"}
+        };
+        
+        // Without error handling: exception raised during execution:
+        // ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+        //
+        // println(rect(rectAttributes1));
+
+        String[][] rectAttributes2 = {
+            {"width", "100%", "Euh, qu'est-ce que je fais là?"}, 
+        };
+
+        // Without error handling: third argument ignored
+        //
+        // println(rect(rectAttributes2));
+        
+        String[][] rectAttributes3 = {
+            {"width", null}, 
+        };
+
+        // Without error handling: <rect width="null"></rect>
+        //
+        // println(rect(rectAttributes3));
+
+    }
+
+    public static void main2(String[] args) {
         // Source: <https://developer.mozilla.org/fr/docs/Web/SVG/Tutorial>
         String[][] svgAttributes = {
             {"version", "1.1"},
@@ -171,7 +226,10 @@ public class SVGTutorial {
                 "SVG"
             )
         );
-        println(elt);
         write("demo1.svg", elt);
+    }
+
+    public static void main(String[] args) {
+        main1(args);
     }
 }
