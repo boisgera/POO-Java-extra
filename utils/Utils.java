@@ -14,11 +14,14 @@ import java.nio.file.Paths;
 
 public class Utils {
 
-    // error or exit ? With optional error code?
+// Error Management
+// -----------------------------------------------------------------------------
     public static void error(String message) {
         throw new RuntimeException(message);
     }
 
+// Conversion to String
+// -----------------------------------------------------------------------------
     public static String str(boolean b) {
         return Boolean.valueOf(b).toString();
     }
@@ -47,6 +50,8 @@ public class Utils {
         return Character.toString(c);
     }
 
+    // quote the stuff instead? Dunno. I'd say no for consistency 
+    // since str(char) is not quoted either.
     public static String str(String s) {
         return s;
     }
@@ -55,12 +60,10 @@ public class Utils {
         return Long.valueOf(l).toString();
     }
 
+// Standard Output and File I/O
+// -----------------------------------------------------------------------------
     public static void print(String string) {
         System.out.print(string);
-    }
-
-    public static void println(String string) {
-        print(string + "\n");
     }
 
     public static String read(String filename) {
@@ -84,25 +87,6 @@ public class Utils {
             String message = error.getMessage();
             throw new RuntimeException("IOException: " + message);
         }
-    }
-
-    public static void append(String filename, String content) {
-        String fileContent = read(filename);
-        String newContent = fileContent + content;
-        write(filename, newContent);
-    }
-
-    public static int length(String string) {
-        return string.length();
-    }
-
-    public static <Type> int length(Type[] array) {
-        return array.length;
-    }
-
-    // That kind of stuff is needed for primitive types.
-    public static int length(int[] array) {
-        return array.length;
     }
 
 }

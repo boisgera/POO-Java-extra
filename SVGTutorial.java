@@ -27,7 +27,7 @@ public class SVGTutorial {
 
     public static String attrString(String[][] attributes) {
         String result = "";
-        int n = length(attributes);
+        int n = attributes.length;
         for (int i=0; i<n; i++) {
             String[] kv = attributes[i];
             String key = kv[0];
