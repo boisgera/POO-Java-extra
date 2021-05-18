@@ -24,10 +24,10 @@ public class Preamble {
         error("I am afraid I can't do that Dave.");
     }
     public static void main(String[] args) {
-        print("Hello world!\n");
-        println("Hello world!");
+        print("Hello world! 👋\n");
+        println("Hello world! 👋");
         printlnInt(42);
-        write("out.txt", "Hello World!");
+        write("out.txt", "Hello World! 👋");
         println(read("out.txt"));
         append("out.txt", " v2");
         println(read("out.txt"));
