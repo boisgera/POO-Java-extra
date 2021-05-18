@@ -27,10 +27,10 @@ public class Preamble {
         print("Hello world! 👋\n");
         println("Hello world! 👋");
         printlnInt(42);
-        write("out.txt", "Hello World! 👋");
-        println(read("out.txt"));
-        append("out.txt", " v2");
-        println(read("out.txt"));
+        write("Hello.txt", "Hello World! 👋");
+        println(read("Hello.txt"));
+        append("Hello.txt", " v2");
+        println(read("Hello.txt"));
         openThePodBayDoors();
     }
 }
