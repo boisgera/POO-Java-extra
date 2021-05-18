@@ -20,10 +20,10 @@ import static utils.Utils.*;
 
 public class SVGTutorial {
 
-    public static String[][] attrs(String allAttrs) {
-        // TODO: "parse"; accept double or simple quotes (easier).
-        return null;
-    }
+    // public static String[][] attrs(String allAttrs) {
+    //     // TODO: "parse"; accept double or simple quotes (easier).
+    //     return null;
+    // }
 
     public static String attrString(String[][] attributes) {
         String result = "";
@@ -40,8 +40,30 @@ public class SVGTutorial {
         return result;
     }
 
+    public static String[][] kv(String[][] attributes, String key, String value) {
+        int n = attributes.length;
+        String[][] newAttributes = new String[n+1][];
+        for (int i=0; i<n; i++) {
+            newAttributes[i] = attributes[i];
+        }
+        String[] kv = {key, value};
+        newAttributes[n] = kv;
+        return newAttributes;
+    }
+
+    public static String[][] kv(String[][] attributes, String key, int value) {
+        String val = str(value);
+        return kv(attributes, key, val);
+    }
+
+    public static String[][] kv(String[][] attributes, String key, double value) {
+        String val = str(value);
+        return kv(attributes, key, val);
+    }
+
     public static void checkAttributes(String[][] attributes) {
         for (String[] kv: attributes) {
+            // TODO : test for null String[]
             if (kv.length != 2) {
                 String message = "attributes should contain pairs of strings. ";
                 message += "One item of length " + kv.length + " != 2 has been found.";
@@ -158,7 +180,7 @@ public class SVGTutorial {
         return element("text");
     }
 
-    public static void main1(String[] args) {
+    public static void testErrors(String[] args) {
         String[][] rectAttributes1 = {
             {"width"},
             {"100%"}, 
@@ -189,9 +211,11 @@ public class SVGTutorial {
         //
         // println(rect(rectAttributes3));
 
+        // TODO: test for null insteaf of pair.
+
     }
 
-    public static void main2(String[] args) {
+    public static void app(String[] args) {
         // Source: <https://developer.mozilla.org/fr/docs/Web/SVG/Tutorial>
         String[][] svgAttributes = {
             {"version", "1.1"},
@@ -219,17 +243,79 @@ public class SVGTutorial {
             {"fill", "white"}
         };
 
+        String textContent = "SVG";
+        if (args.length != 0) {
+            textContent = "";
+            for (int i=0; i < args.length; i++) {
+                if (i > 0) {
+                    textContent += " ";
+                }
+                textContent += args[i];
+            }
+        }
+
         String elt = svg(svgAttributes,
             rect(rectAttributes),
             circle(circleAttributes),
             text(textAttributes, 
-                "SVG"
+                textContent
+            )
+        );
+        write("demo1.svg", elt);
+    }
+
+    public static void appAlt(String[] args) {
+        // Source: <https://developer.mozilla.org/fr/docs/Web/SVG/Tutorial>
+
+        String[][] svgAttributes = {};
+        svgAttributes = kv(svgAttributes, "version", "1.1");
+        svgAttributes = kv(svgAttributes, "baseProfile", "full");
+        svgAttributes = kv(svgAttributes, "width", 300);
+        svgAttributes = kv(svgAttributes, "height", 200);
+        svgAttributes = kv(svgAttributes, "xmlns", "http://www.w3.org/2000/svg");
+
+        String[][] rectAttributes = {};
+        rectAttributes = kv(rectAttributes, "width", "100%");
+        rectAttributes = kv(rectAttributes, "height", "100%");
+        rectAttributes = kv(rectAttributes, "fill", "red");
+ 
+        String[][] circleAttributes = {};
+        circleAttributes = kv(circleAttributes, "cx", 150);
+        circleAttributes = kv(circleAttributes, "cy", 100);
+        circleAttributes = kv(circleAttributes, "r", 80);
+        circleAttributes = kv(circleAttributes, "fill", "green");
+
+        String[][] textAttributes = {};
+        textAttributes = kv(textAttributes, "x", 150);
+        textAttributes = kv(textAttributes, "y", 125);
+        textAttributes = kv(textAttributes, "font-size", 60);
+        textAttributes = kv(textAttributes, "text-anchor", "middle");
+        textAttributes = kv(textAttributes, "fill", "white");
+
+        String textContent = "SVG";
+        if (args.length != 0) {
+            textContent = "";
+            for (int i=0; i < args.length; i++) {
+                if (i > 0) {
+                    textContent += " ";
+                }
+                textContent += args[i];
+            }
+        }
+
+        String elt = svg(svgAttributes,
+            rect(rectAttributes),
+            circle(circleAttributes),
+            text(textAttributes, 
+                textContent
             )
         );
         write("demo1.svg", elt);
     }
 
     public static void main(String[] args) {
-        main1(args);
+        // testErrors(args);
+        appAlt(args);
+        //app(args);
     }
 }
