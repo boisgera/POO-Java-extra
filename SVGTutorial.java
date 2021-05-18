@@ -12,18 +12,8 @@ import static utils.Utils.*;
 //
 // </svg>
 
-// TODO:
-//
-//   - Error handling in element (for attributes)
-//
-//   - Attributes adder (with several types for the value).
 
 public class SVGTutorial {
-
-    // public static String[][] attrs(String allAttrs) {
-    //     // TODO: "parse"; accept double or simple quotes (easier).
-    //     return null;
-    // }
 
     public static String attrString(String[][] attributes) {
         String result = "";
@@ -86,8 +76,6 @@ public class SVGTutorial {
         boolean indent, 
         String... children) 
     {
-        
-
         checkAttributes(attributes);
 
         String result = "";
@@ -141,7 +129,6 @@ public class SVGTutorial {
         return element(name, noAttrs);
     }
 
-    // TODO: fill the version, baseProfile and xmlns by default values ?
     public static String svg(String[][] attributes, String... children) {
         return element("svg", attributes, true, children);
     }
@@ -211,7 +198,7 @@ public class SVGTutorial {
         //
         // println(rect(rectAttributes3));
 
-        // TODO: test for null insteaf of pair.
+        // TODO: test for null instead of pair.
 
     }
 
