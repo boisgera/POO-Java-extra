@@ -1,6 +1,8 @@
 //import java.lang.Math;
 import java.lang.NullPointerException;
 
+// TODO equals, hashCode
+
 public class Color {
     public final Integer R;
     public final Integer G;
@@ -8,19 +10,19 @@ public class Color {
 
     // TODO: reduce code duplication
     public Color(int R, int G, int B) {
-      if (R < 0) || (R > 255) {
+      if ((R < 0) || (R > 255)) {
         String error;
-        error = "Color(R, G, B): R should be between 0 and 255, got " + R + " instead.";
+        error = "R should be between 0 and 255, got " + R + " instead.";
         throw new IllegalArgumentException(error);
       }
-      if (G < 0) || (G > 255) {
+      if ((G < 0) || (G > 255)) {
         String error;
-        error = "Color(R, G, B): G should be between 0 and 255, got " + G + " instead.";
+        error = "G should be between 0 and 255, got " + G + " instead.";
         throw new IllegalArgumentException(error);
       }
-      if (B < 0) || (B > 255) {
+      if ((B < 0) || (B > 255)) {
         String error;
-        error = "Color(R, G, B): B should be between 0 and 255, got " + B + " instead.";
+        error = "B should be between 0 and 255, got " + B + " instead.";
         throw new IllegalArgumentException(error);
       }
       this.R = R;
