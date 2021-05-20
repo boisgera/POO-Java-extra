@@ -51,13 +51,13 @@ public class ColorAlpha {
     }
 
     public String toString() {
-        String string = this.toColor().toString();
+        String string = this.color.toString();
         string = string.substring(0, string.length() - 1);
         string += "," + A + ")";
         return string;
     }
 
     public String toHexString() {
-        return this.toColor().toHexString() + Color.channelToHex(this.A);
+        return this.color.toHexString() + Color.channelToHex(this.A);
     }
 }
