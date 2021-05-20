@@ -1,5 +1,5 @@
-//import java.lang.Math;
 import java.lang.NullPointerException;
+import java.util.Objects;
 
 // TODO equals, hashCode
 
@@ -30,9 +30,20 @@ public class Color {
       this.B = B;
     }
   
-  // NOTA: this also *could be* an derived NamedColor class. 
-  // That would make sense (once instantiated, they are truly indistinguishable
-  // from "normal" colors).
+  @Override
+  public boolean equals(Object other) {
+      if (!(other instanceof Color)) {
+          return false;
+      }
+      Color color = (Color) other;
+      return (this.R == color.R) && (this.G == color.G) && (this.B == color.B);
+  }
+
+  @Override
+  public int hashCode() {
+      return Objects.hash(this.R, this.G, this.B);
+  }
+
   public Color(String hexString) {
       Color color = Color.parseHexString(hexString);
       this.R = color.R;

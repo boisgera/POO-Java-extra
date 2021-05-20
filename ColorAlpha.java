@@ -1,7 +1,19 @@
 
 public class ColorAlpha {
-    public final Color color;
+    public final Integer R;
+    public final Integer G;
+    public final Integer B;
     public final Integer A;
+    public final Color color;
+
+
+    public ColorAlpha(Integer R, Integer G, Integer B, Integer A) {
+        this.R = R;
+        this.G = G;
+        this.B = B;
+        this.A = A;
+        this.color = new Color(R, G, B);
+    }
 
     public ColorAlpha(Color color, Integer A) {
         // TODO: reduce code duplication
@@ -10,19 +22,24 @@ public class ColorAlpha {
             error = "A should be between 0 and 255, got " + A + " instead.";
             throw new IllegalArgumentException(error);
           }
-        this.color = color;
+        this.R = color.R;
+        this.G = color.G;
+        this.B = color.B;
         this.A = A;
     }
 
-    public ColorAlpha(Integer R, Integer G, Integer B, Integer A) {
-        this(new Color(R, G, B), A);
+    public ColorAlpha(Color color) {
+        this(color, 255);
     }
 
     public ColorAlpha(String hexString) {
         if (hexString.length() != 9) {
             throw new IllegalArgumentException("invalid : hexString should have a length of 9.");
         }
-        this.color = new Color(hexString.substring(0, 7));
+        Color color = new Color(hexString.substring(0, 7));
+        this.R = color.R;
+        this.G = color.G;
+        this.B = color.B;
         hexString = hexString.toLowerCase();
         for (int i=6; i <= 8; i++) {
             if ("0123456789abcdef".indexOf(hexString.charAt(i)) == -1) {
@@ -34,13 +51,13 @@ public class ColorAlpha {
     }
 
     public String toString() {
-        String string = color.toString();
+        String string = this.toColor().toString();
         string = string.substring(0, string.length() - 1);
         string += "," + A + ")";
         return string;
     }
 
     public String toHexString() {
-        return color.toHexString() + Color.channelToHex(this.A);
+        return this.toColor().toHexString() + Color.channelToHex(this.A);
     }
 }
