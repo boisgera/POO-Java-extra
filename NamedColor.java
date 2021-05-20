@@ -2,15 +2,14 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class NamedColor extends Color {
-    private static final Map<String, String> namedColors;
+    private static Map<String, String> namedColors = new HashMap<String, String>();
     
     static {
-        namedColors = new HashMap<String, String>();
-        namedColors.put("black", "#000000");
-        namedColors.put("white", "#ffffff");
-        namedColors.put("red", "#ff0000");
-        namedColors.put("green", "#00ff00");
-        namedColors.put("blue", "#0000ff");
+        NamedColor.namedColors.put("black", "#000000");
+        NamedColor.namedColors.put("white", "#ffffff");
+        NamedColor.namedColors.put("red", "#ff0000");
+        NamedColor.namedColors.put("green", "#00ff00");
+        NamedColor.namedColors.put("blue", "#0000ff");
     }
 
     private static String find(String name) {
