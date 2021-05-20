@@ -1,4 +1,4 @@
-public class Rectangle extends Node
+public class Rectangle extends Element
 {
     // Attributs
     private double x;
@@ -23,53 +23,38 @@ public class Rectangle extends Node
     {
         this(0.0, 0.0, 1.0, 1.0, 0.0, 0.0, "");
     }
-
-    public void moveTo(double x, double y)
-    {
-        this.x = x;
-        this.y = y;
-    }
-    
-    public void translate(double dx, double dy)
-    {
-        this.x += dx;
-        this.y += dy;
-    }
-    
-        
-    public void scale(double factor)
-    {
-        this.height *= factor;
-        this.width  *= factor;
-    }
         
     public String toString()
     {
-        return  "Rectangle : ("
-                + (new Double(this.x)).toString()
-                + " , "
-                + (new Double(this.y)).toString()
-                + ")  hauteur : "
-                + (new Double(this.height)).toString()
-                + "  largeur : "
-                + (new Double(this.width)).toString();
+        return  "Rectangle("
+                + x
+                + ", "
+                + y
+                + ", "
+                + height
+                + ", "
+                + rx
+                + ","
+                + ry 
+                + ","
+                + style + ")";
     }
     
     public String toXML()
     {
         return "<rect x=\""
-                + (new Double(this.x)).toString()
+                + x
                 + "\" y=\""
-                + (new Double(this.y)).toString()
+                + y
                 + "\" width=\""
-                + (new Double(this.width)).toString()
+                + width
                 + "\" height=\""
-                + (new Double(this.height)).toString()
+                + height
                 + "\" rx=\""
-                + (new Double(this.rx)).toString()
+                + rx
                 + "\" ry=\""
-                + (new Double(this.ry)).toString() + "\" " 
-                +  "style=\"" + this.style + "\" "
+                + ry + "\" " 
+                +  "style=\"" + style + "\" "
                 + "/>";
     }
 }

@@ -1,4 +1,4 @@
-public class Circle extends Node
+public class Circle extends Element
 {
     // Attributs
     private double cx;
