@@ -1,31 +1,20 @@
-import static utils.Utils.*;
+import java.util.List;
 
-public class SVG implements XML {
+// Reference: <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg>
 
-    private Node[] nodes;
+public class SVG extends Element {
 
-    public SVG(Node[] nodes)
+// version="1.1"
+//      baseProfile="full"
+//      xmlns="http://www.w3.org/2000/svg">
+
+    public SVG(SVGAttributes attributes, Node... children)
     {
-        this.nodes = nodes;
+        super("svg", attributes, children);
     }
     
-    public void export(String filename) {
-        write(filename, this.toXML());
+    public void write(String filename) {
+        utils.Utils.write(filename, this.toXML());
     }
 
-    public String toXML() {
-        String output;
-
-        output = "<svg version=\"1.1\" " +
-        "baseProfile=\"full\" " +
-        "viewBox= \"-1 -1 2 2 \" width=\"2\" height=\"2\" " +
-        "xmlns=\"http://www.w3.org/2000/svg\">";
-
-        for (Node node: this.nodes) {
-          output += node.toXML();
-        }
-
-        output += "</svg>";
-        return output;
-    }
 }

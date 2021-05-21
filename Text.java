@@ -1,5 +1,8 @@
-public class Text extends Node implements XML {
+public class Text extends Node {
     private final String text;
+
+    // TODO: escape text
+
     public Text(String text) {
         this.text = text;
     }

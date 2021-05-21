@@ -1,28 +1,46 @@
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 // TODO : clone, etc.
 
 // TODO: create an indentation function by clone + insertion of blank text nodes.
 
-abstract public class Element extends Node implements XML {
-    public String tagName;
-    public Map<String, String> attributes;
+abstract public class Element extends Node {
+    public String name;
+    public Attributes attributes;
     public List<Node> children;
-    protected String style; // TODO: upgrade as a class.
-    // TODO: accept fill, stroke as Colors (does it ALWAYS make sense ? Probaby not)
-    // style finally dunno if we really need it ... even font stuff can be
-    // specified directly as attributes.
-    // TODO: transform
 
-    protected Element(String tagName, Map<String, String> attributes, List<Node> children) {
-        this.tagName = tagName;
+    // get rid of this one?
+    protected Element(String name, Attributes attributes, List<Node> children) {
+        this.name = name;
         this.attributes = attributes;
         this.children = children;
     }
 
+    protected Element(String name, Attributes attributes, Node... children) {
+        this.name = name;
+        this.attributes = attributes;
+        this.children = new ArrayList<Node>();
+        for (Node child: children) {
+            this.children.add(child);
+        }
+    }
+    protected Element(String name, Node... children) {
+        this(name, new Attributes(), children);
+    }
+
     public String toXML() {
-        return ""; // TODO !
+        String xml = "<" + this.name ;
+        String attrString = this.attributes.toXML();
+        if (attrString.length() > 0) {
+            xml += " " + attrString;
+        }
+        xml += ">";
+        for (Node child: this.children) {
+            xml += child.toXML();
+        }
+        xml += "</" + this.name + ">";
+        return xml;
     }
 
     public String toString() {
