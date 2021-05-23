@@ -2,10 +2,10 @@ import java.util.Map;
 
 public class Fill extends Attributes {
 
-    // TODO: accept / check via Color
-
-    // TODO: extra constructors
-
+    public Fill()
+    {
+        super();
+    }
 
     public Fill(Attributes attributes)
     {

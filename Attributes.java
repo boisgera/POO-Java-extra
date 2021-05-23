@@ -27,11 +27,12 @@ public class Attributes implements XML {
         attributesMap = new LinkedHashMap<String, String>();
     }
 
-    public void update(Map<String, String> attributes) {
+    public Attributes update(Map<String, String> attributes) {
         for (String key: attributes.keySet()) {
             String value = attributes.get(key);
             this.attributesMap.put(key, value);
         }
+        return this;
     }
 
     public Map<String, String> toMap() {
@@ -43,12 +44,20 @@ public class Attributes implements XML {
         this.update(attributesMap);
     }
 
-    public void update(Attributes attributes) {
+    public Attributes update(Attributes attributes) {
         this.update(attributes.toMap());
+        return this;
     }
 
     public Attributes(Attributes attributes) {
         this(attributes.toMap());
+    }
+
+    public Attributes(Attributes... attributesArray) {
+        this();
+        for (Attributes attributes: attributesArray) {
+            this.update(attributes);
+        }
     }
 
 

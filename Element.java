@@ -10,11 +10,7 @@ abstract public class Element extends Node {
     public Attributes attributes;
     public List<Node> children;
 
-    // get rid of this one?
-    protected Element(String name, Attributes attributes, List<Node> children) {
-        this.name = name;
-        this.attributes = attributes;
-        this.children = children;
+    protected Element() {
     }
 
     protected Element(String name, Attributes attributes, Node... children) {
@@ -36,8 +32,10 @@ abstract public class Element extends Node {
             xml += " " + attrString;
         }
         xml += ">";
-        for (Node child: this.children) {
-            xml += child.toXML();
+        if (this.children != null) {
+            for (Node child: this.children) {
+                xml += child.toXML();
+            }
         }
         xml += "</" + this.name + ">";
         return xml;

@@ -1,6 +1,6 @@
 import java.util.Map;
 
-public class GeometryAttributes extends Attributes {
+public class Geometry extends Attributes {
 
 // height
 //     The displayed height of the rectangular viewport. (Not the height of its coordinate system.)
@@ -20,12 +20,17 @@ public class GeometryAttributes extends Attributes {
     // Keys ? Filter or raise when foreign ? I'd say filter.
     // Check Values validity too ? *Ideally*, yes.
     // Via a static method.
-    public GeometryAttributes(Attributes attributes)
+    public Geometry()
+    {
+        super();
+    }
+
+    public Geometry(Attributes attributes)
     {
         super(attributes.filter("x", "y", "width", "height"));
     }
 
-    public GeometryAttributes(Map<String, String> attributesMap)
+    public Geometry(Map<String, String> attributesMap)
     {
         this(new Attributes(attributesMap));
     }

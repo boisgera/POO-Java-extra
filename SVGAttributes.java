@@ -1,6 +1,6 @@
 import java.util.Map;
 
-public class SVGAttributes extends GeometryAttributes {
+public class SVGAttributes extends Geometry {
 
 // Attributes
 //
@@ -35,6 +35,11 @@ public class SVGAttributes extends GeometryAttributes {
 //     The displayed y coordinate of the svg container. No effect on outermost svg elements.
 //     Value type: <length>|<percentage> ; Default value: 0; Animatable: yes 
 
+    public SVGAttributes()
+    {
+        super();
+    }
+
     public SVGAttributes(Attributes attributes)
     {
         super(attributes);
@@ -44,7 +49,8 @@ public class SVGAttributes extends GeometryAttributes {
             "contentStyleType",
             "preserveAspectRatio",
             "version",
-            "viewBox");
+            "viewBox",
+            "xmlns");
         this.update(extraAttributes);
     }
 
@@ -99,6 +105,14 @@ public class SVGAttributes extends GeometryAttributes {
 
     public void setViewBox(String viewBox) {
         this.attributesMap.put("viewBox", viewBox);
+    }
+
+    public String getXMLNS() {
+        return this.attributesMap.get("xmlns");
+    }
+
+    public void setXMLNS(String xmlns) {
+        this.attributesMap.put("xmlns", xmlns);
     }
 
 }

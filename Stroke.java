@@ -2,9 +2,10 @@ import java.util.Map;
 
 public class Stroke extends Attributes {
 
-    // TODO: accept / check via Color ?
-
-    // TODO: extra constructors
+    public Stroke()
+    {
+        super();
+    }
 
     public Stroke(Attributes attributes)
     {
