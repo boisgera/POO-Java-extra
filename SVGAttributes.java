@@ -1,4 +1,6 @@
-public class SVGAttributes extends Attributes {
+import java.util.Map;
+
+public class SVGAttributes extends GeometryAttributes {
 
 // Attributes
 //
@@ -33,28 +35,70 @@ public class SVGAttributes extends Attributes {
 //     The displayed y coordinate of the svg container. No effect on outermost svg elements.
 //     Value type: <length>|<percentage> ; Default value: 0; Animatable: yes 
 
-    public SVGAttributes(
-        String baseProfile,
-        String contentScriptType,
-        String contentStyleType,
-        String height,
-        String preserveAspectRatio,
-        String version,
-        String viewBox,
-        String width,
-        String x,
-        String y
-    )
+    public SVGAttributes(Attributes attributes)
     {
-        this.attributes.put("baseProfile", baseProfile);
-        this.attributes.put("contentScriptType", contentScriptType);
-        this.attributes.put("contentStyleType", contentStyleType);
-        this.attributes.put("height", height);
-        this.attributes.put("preserveAspectRatio", preserveAspectRatio);
-        this.attributes.put("version", version);
-        this.attributes.put("viewBox", viewBox);
-        this.attributes.put("width", width);
-        this.attributes.put("x", x);
-        this.attributes.put("x", y);
+        super(attributes);
+        Attributes extraAttributes = attributes.filter(
+            "baseProfile", 
+            "contentScriptType", 
+            "contentStyleType",
+            "preserveAspectRatio",
+            "version",
+            "viewBox");
+        this.update(extraAttributes);
     }
+
+    public SVGAttributes(Map<String, String> attributesMap)
+    {
+        this(new Attributes(attributesMap));
+    }
+
+    public String getbaseProfile() {
+        return this.attributesMap.get("baseProfile");
+    }
+
+    public void setbaseProfile(String baseProfile) {
+        this.attributesMap.put("baseProfile", baseProfile);
+    }
+
+    public String getContentScriptType() {
+        return this.attributesMap.get("contentScriptType");
+    }
+
+    public void setContentScriptType(String contentScriptType) {
+        this.attributesMap.put("contentScriptType", contentScriptType);
+    }
+
+    public String getContentStyleType() {
+        return this.attributesMap.get("contentStyleType");
+    }
+
+    public void setContentStyleType(String contentStyleType) {
+        this.attributesMap.put("contentStyleType", contentStyleType);
+    }
+
+    public String getPreserveAspectRatio() {
+        return this.attributesMap.get("preserveAspectRatio");
+    }
+
+    public void setPreserveAspectRatio(String preserveAspectRatio) {
+        this.attributesMap.put("preserveAspectRatio", preserveAspectRatio);
+    }
+
+    public String getVersion() {
+        return this.attributesMap.get("version");
+    }
+
+    public void setVersion(String version) {
+        this.attributesMap.put("version", version);
+    }
+
+    public String getViewBox() {
+        return this.attributesMap.get("viewBox");
+    }
+
+    public void setViewBox(String viewBox) {
+        this.attributesMap.put("viewBox", viewBox);
+    }
+
 }
