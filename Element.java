@@ -38,7 +38,7 @@ abstract public class Element implements Node {
 
     public void setChildren(List<Node> children) {
         if (this.children != null) {
-            this.children = children;
+            this.children = new ArrayList<Node>(children);
         } else {
             String message = "type " + this.name + " cannot have children.";
             throw new RuntimeException(message);
