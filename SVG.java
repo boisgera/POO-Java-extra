@@ -6,9 +6,11 @@ public class SVG extends Element {
     {
         super("svg", attributes, children);
     }
-    
-    public void write(String filename) {
-        utils.Utils.write(filename, this.toXML());
+
+    @Override
+    public void setAttributes(Attributes attributes) {
+        attributes = new SVGAttributes(attributes);
+        super.setAttributes(attributes);
     }
 
 }

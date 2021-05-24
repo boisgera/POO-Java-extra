@@ -1,9 +1,9 @@
-public class TextNode implements Node {
+public class TextContent implements Node {
     private final String text;
 
     // TODO: escape text
 
-    public TextNode(String text) {
+    public TextContent(String text) {
         this.text = text;
     }
     public String toString() {

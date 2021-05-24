@@ -1,3 +1,4 @@
+import static utils.Utils.*;
 import java.lang.System;
 
 // <svg version="1.1"
@@ -45,13 +46,15 @@ public class App {
     };
     TextAttributes textAttributes = new TextAttributes(textAttributesArray);
 
- SVG svg = new SVG(svgAttributes,
-        new Rectangle(rectangleAttributes),
-        new Circle(circleAttributes),
-        new Text(textAttributes, new TextNode("SVG"))
+    SVG svg = new SVG(svgAttributes,
+            new Rectangle(rectangleAttributes),
+            new Circle(circleAttributes),
+            new Text(textAttributes, new TextContent("SVG"))
     );
 
+    svg.indent();
+
     System.out.println(svg.toXML());
-    svg.write("demo2.svg");
+    write("demo2.svg", svg.toXML());
   }
 }
