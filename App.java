@@ -1,6 +1,4 @@
 import java.lang.System;
-import java.util.ArrayList;
-import java.util.List;
 
 // <svg version="1.1"
 //      baseProfile="full"
@@ -10,7 +8,6 @@ import java.util.List;
 //   <circle cx="150" cy="100" r="80" fill="green" />
 //   <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
 // </svg>
-
 
 public class App {
   public static void main(String[] args) {

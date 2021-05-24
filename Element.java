@@ -5,7 +5,7 @@ import java.util.List;
 
 // TODO: create an indentation function by clone + insertion of blank text nodes.
 
-abstract public class Element extends Node {
+abstract public class Element implements Node {
     public String name;
     public Attributes attributes;
     public List<Node> children;
