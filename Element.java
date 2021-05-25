@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 abstract public class Element implements Node {
@@ -11,6 +10,13 @@ abstract public class Element implements Node {
         this.name = name;
         this.attributes = attributes;
         this.children = new ArrayList<Node>();
+        for (Node child: children) {
+            this.children.add(child);
+        }
+    }
+
+    protected Element(String name, Node... children) {
+        this.name = name;
         for (Node child: children) {
             this.children.add(child);
         }
