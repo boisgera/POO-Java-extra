@@ -199,6 +199,7 @@ public class SVGTutorial {
         // println(rect(rectAttributes3));
 
         // TODO: test for null instead of pair.
+        // CJ: DONE. NullPointerException at runtime.
 
     }
 
