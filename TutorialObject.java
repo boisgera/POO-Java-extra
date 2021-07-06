@@ -75,11 +75,43 @@ public class TutorialObject {
         write("lettre_finale.txt", content);
     }
 
+    static void completeLetter(String filename,String name, boolean isFemale){
+        // Surcharge de la version de base pour ne pas l'écraser...
+
+        // Traitement du nom de fichier
+        String basename,newFilename ;
+        if (filename.toLowerCase().endsWith(".txt")){ // on utilise toLowerCase pour ne pas différenicer ".txt" et ".TXT"
+            basename = filename.substring(0,filename.length()-4);
+        }else{
+            basename = filename ;
+            filename = filename + ".txt";
+        }
+        newFilename = basename + "_" + name + ".txt";
+
+        // Traitement de la lettre
+        String content = read(filename); // contenu du fichier
+        content = content.replace("$NOM$",name);
+        if (isFemale){
+            content = content.replace("$MADAME_MONSIEUR$","Madame");
+            content = content.replace("$X$","se");
+            content = content.replace("$E$","e");
+        }else
+        {
+            // Version en une ligne
+            content = content.replace("$MADAME_MONSIEUR$","Monsieur").replace("$X$","x").replace("$E$","");
+        }
+        write(newFilename, content);
+
+
+    }
+
     public static void main(String[] args){
         //testInteger();
         //testDouble();
         completeLetter("Java",true);
         //completeLetter("Java",false);
+        completeLetter("lettre.txt", "Java",true);
+        completeLetter("lettre", "Poo", false);
    
     }
     
