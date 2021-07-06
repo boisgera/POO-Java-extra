@@ -119,6 +119,31 @@ public class TutorialObject {
 
     }
 
+    public static void readDouble(Double x,int size){
+        String xString = x.toString();
+        String[] tabSplit = xString.split("[.]|E");
+        System.out.print("Partie entière : ");
+        System.out.println(tabSplit[0]);
+        System.out.print("Partie décimale : .");
+        String decPart = tabSplit[1];
+        if (size>decPart.length()){
+            // On ajoute des zéros
+            decPart += "0".repeat(size - decPart.length());
+        }else if(size >0){
+            // size est plus petit que la longueur de decPart mais plus grand que 0. On coupe.
+            // Éventuellement, on peut se retrouver avec la même longueur exactement.
+            decPart = decPart.substring(0,size);
+        }
+        // Sinon, decPart ne sera pas modifié.
+
+        System.out.println(decPart);
+        if (tabSplit.length ==3){
+            System.out.print("Puissance de 10 : ");
+            System.out.println(tabSplit[2]);
+        }
+
+    }
+
     public static void main(String[] args){
         //testInteger();
         //testDouble();
@@ -126,10 +151,28 @@ public class TutorialObject {
         //completeLetter("Java",false);
         completeLetter("lettre.txt", "Java",true);
         completeLetter("lettre", "Poo", false);
+        System.out.println("Tests ReadDouble");
         readDouble(3.14);
+        System.out.println("\n"); // Pour avoir un saut de ligne après
         readDouble(1_234_567_890d);
+        System.out.println("\n"); // Pour avoir un saut de ligne après
 
-   
+        // Test readDouble avec size
+        System.out.println("Test readDouble avec paramètre size");
+        readDouble(3.,-2);        
+        System.out.println("\n"); // Pour avoir un saut de ligne après
+
+        readDouble(3.,2);
+        System.out.println("\n"); // Pour avoir un saut de ligne après
+
+        readDouble(3.14159,4);
+        System.out.println("\n"); // Pour avoir un saut de ligne après
+
+        readDouble(1./3.,1);
+        System.out.println("\n"); // Pour avoir un saut de ligne après
+
+        readDouble(1.4564e15,10);
+        System.out.println("\n"); // Pour avoir un saut de ligne après
     }
     
 }
