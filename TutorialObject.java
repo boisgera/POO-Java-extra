@@ -38,8 +38,31 @@ public class TutorialObject {
         System.out.println(a.compareTo(a));
     }
 
+    public static void testDouble(){
+        Double inf = Double.POSITIVE_INFINITY;
+        Double moinsInf = -1.0/0.0 ; 
+        Double nan = Double.NaN ;
+        Double nan2 = inf + moinsInf ;
+        Double fini = 3.14 ;
+        System.out.println("Résultats de testDouble : ");
+        System.out. println("inf et moinsInf sont infinis ?");
+        System.out.println(inf.isInfinite());
+        System.out.println(moinsInf.isInfinite());
+        System.out. println("fini, nan et nan2 sont infinis ?");
+        System.out.println(fini.isInfinite());
+        System.out.println(nan.isInfinite());
+        System.out.println(nan2.isInfinite());
+        System.out.println("nan et nan2 sont NaN ?");
+        System.out.println(nan.isNaN());
+        System.out.println(nan2.isNaN());
+        System.out.println("fini et nan sont finis ?");
+        System.out.println(Double.isFinite(fini)); // ATTENTION : seulement en méthode statique
+        System.out.println(Double.isFinite(nan));
+    }
+
     public static void main(String[] args){
-        testInteger();
+        //testInteger();
+        testDouble();
 
     }
     
