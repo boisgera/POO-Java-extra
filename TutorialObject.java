@@ -105,6 +105,20 @@ public class TutorialObject {
 
     }
 
+    public static void readDouble(Double x){
+        String xString = x.toString();
+        String[] tabSplit = xString.split("[.]|E");
+        System.out.print("Partie entière : ");
+        System.out.println(tabSplit[0]);
+        System.out.print("Partie décimale : .");
+        System.out.println(tabSplit[1]);
+        if (tabSplit.length ==3){
+            System.out.print("Puissance de 10 : ");
+            System.out.println(tabSplit[2]);
+        }
+
+    }
+
     public static void main(String[] args){
         //testInteger();
         //testDouble();
@@ -112,6 +126,9 @@ public class TutorialObject {
         //completeLetter("Java",false);
         completeLetter("lettre.txt", "Java",true);
         completeLetter("lettre", "Poo", false);
+        readDouble(3.14);
+        readDouble(1_234_567_890d);
+
    
     }
     
