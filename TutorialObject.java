@@ -1,4 +1,8 @@
 import static utils.Utils.*;
+import java.util.*;
+
+import org.graalvm.compiler.core.common.type.ArithmeticOpTable.BinaryOp.Div;
+
 
 public class TutorialObject {
 
@@ -144,6 +148,23 @@ public class TutorialObject {
 
     }
 
+    public static List<Integer> listDiv(int N){
+        if (N<0){
+            N = -N ; // On ne cherche que les diviseurs positifs
+        }
+        List<Integer> listDiv = new ArrayList<Integer>();
+        if (N != 0){
+            listDiv.add(N);
+        }
+        
+        for (int i = N/2 ; i>=1 ; i--){
+            if (N%i == 0){
+                listDiv.add(i);
+            }
+        }
+        return listDiv ;
+    }
+
     public static void main(String[] args){
         //testInteger();
         //testDouble();
@@ -173,6 +194,15 @@ public class TutorialObject {
 
         readDouble(1.4564e15,10);
         System.out.println("\n"); // Pour avoir un saut de ligne après
-    }
+
+        // Partie Liste
+        System.out.println("Test liste");
+        List<Integer> div16 = listDiv(16);
+        System.out.print("Nombre de diviseurs de 16 : ");
+        System.out.println(div16.size());
+        System.out.print("Liste des diviseurs de 16: ");
+        System.out.println(div16);
+   }
+    
     
 }
