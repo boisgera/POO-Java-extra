@@ -60,10 +60,27 @@ public class TutorialObject {
         System.out.println(Double.isFinite(nan));
     }
 
+    static void completeLetter(String name, boolean isFemale){
+        String content = read("lettre.txt"); // contenu du fichier
+        content = content.replace("$NOM$",name);
+        if (isFemale){
+            content = content.replace("$MADAME_MONSIEUR$","Madame");
+            content = content.replace("$X$","se");
+            content = content.replace("$E$","e");
+        }else
+        {
+            // Version en une ligne
+            content = content.replace("$MADAME_MONSIEUR$","Monsieur").replace("$X$","x").replace("$E$","");
+        }
+        write("lettre_finale.txt", content);
+    }
+
     public static void main(String[] args){
         //testInteger();
-        testDouble();
-
+        //testDouble();
+        completeLetter("Java",true);
+        //completeLetter("Java",false);
+   
     }
     
 }
