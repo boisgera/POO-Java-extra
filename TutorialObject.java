@@ -165,6 +165,54 @@ public class TutorialObject {
         return listDiv ;
     }
 
+    public static Map<Integer,Integer> listDivMap(int N){
+        if (N<0){
+            N = -N ; // On ne cherche que les diviseurs positifs
+        }
+        Map<Integer,Integer> listDiv = new TreeMap<Integer,Integer>(); // TreeMap permet d'avoir des clés ordonnées
+        //Map<Integer,Integer> listDiv = new TreeMap<Integer,Integer>(Collections.reverseOrder()); // Pour des clés ordonnées en sens inverse
+        if (N != 0){
+            listDiv.put(N,1);
+            listDiv.put(1,1); 
+        }
+        
+        for (int i = N/2 ; i>1 ; i--){
+            if (N%i == 0){
+                // Trouver l'ordre de multiplicité
+                int j = i*i ;
+                int m = 1 ;
+                while(N%j == 0){
+                    m = m+1 ;
+                    j*=i;
+                }
+                listDiv.put(i,m);
+            }
+        }
+        return listDiv ;
+    }
+    public static void isInside(Integer intToTest, Map<Integer,Integer> map){
+        if(map.containsKey(intToTest)){
+            System.out.print(intToTest);
+            System.out.print(" est diviseur de multiplicité ");
+            System.out.println(map.get(intToTest));
+        }else{
+            System.out.print(intToTest);
+            System.out.println(" n'est pas diviseur");
+        }
+    }
+    public static void printDiv(Map<Integer,Integer> map){
+        System.out.print("Nombre de diviseurs : ");
+        System.out.println(map.size());
+        for (Integer i : map.keySet()){
+            System.out.print("  Le diviseur ");
+            System.out.print(i);
+            System.out.print(" est de multiplicité ");
+            System.out.println(map.get(i));
+
+        }
+    }
+
+
     public static void main(String[] args){
         //testInteger();
         //testDouble();
@@ -196,12 +244,25 @@ public class TutorialObject {
         System.out.println("\n"); // Pour avoir un saut de ligne après
 
         // Partie Liste
-        System.out.println("Test liste");
+        System.out.println("Test Liste");
         List<Integer> div16 = listDiv(16);
         System.out.print("Nombre de diviseurs de 16 : ");
         System.out.println(div16.size());
         System.out.print("Liste des diviseurs de 16: ");
         System.out.println(div16);
+
+        // Partie Map
+        System.out.println("\nTest Map");
+        Map<Integer,Integer> div8 = listDivMap(8);
+        isInside(4,div8);
+        isInside(2,div8);
+        isInside(9,div8);
+        printDiv(div8);
+        System.out.println("Test Map avec 16 : ");
+        printDiv(listDivMap(16));
+        System.out.println("Test Map avec -42 : ");
+        printDiv(listDivMap(-42));
+
    }
     
     
