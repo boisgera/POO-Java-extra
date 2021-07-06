@@ -210,6 +210,37 @@ public class TutorialObject {
         }
     }
 
+    public static void printTab(int[]tab){
+        System.out.print("{");
+        for (int i = 0 ; i<tab.length ; i++){
+            System.out.print(tab[i]);
+            if (i==tab.length-1){
+                System.out.println("}");
+            }else{
+                System.out.print(" , ");
+            }
+        }
+    } 
+
+    public static void testArray(){
+        int[] a1 = {1,2,3};
+        int[] a2 = a1 ;
+        printTab(a1) ; // Utilisation d'une fonction auxiliaire pour l'affichage d'un tableau
+        printTab(a2) ;
+        a2[0] = 4 ;
+        printTab(a1) ; 
+        printTab(a2) ;
+    } 
+
+    public static void testArrayWithClone(){
+        int[] a1 = {1,2,3};
+        int[] a2 = a1.clone() ;
+        printTab(a1) ; // Utilisation d'une fonction auxiliaire pour l'affichage d'un tableau
+        printTab(a2) ;
+        a2[0] = 4 ;
+        printTab(a1) ; 
+        printTab(a2) ;
+    } 
 
     public static void main(String[] args){
         //testInteger();
@@ -261,6 +292,12 @@ public class TutorialObject {
         System.out.println("Test Map avec -42 : ");
         printDiv(listDivMap(-42));
 
+        // Partie duplication
+        System.out.println("\n Partie duplication : ");
+        System.out.println("testArray (sans clone) :");
+        testArray();
+        System.out.println("testArray (avec clone) :");
+        testArrayWithClone();
    }
     
     
