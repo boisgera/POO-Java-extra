@@ -242,14 +242,48 @@ public class TutorialObject {
         printTab(a2) ;
     } 
 
+    public static void testArray2(){
+        int[][] a1 = {{1,2,3},{10,20},{100}};
+        int[][] a2 = a1.clone();
+        System.out.print("a1[0][0] avant modification de a2[0][0] : ") ;
+        System.out.println(a1[0][0]);
+        System.out.print("a2[0][0] avant modification de a2[0][0] : ") ;
+        System.out.println(a2[0][0]);
+        a2[0][0] = 123 ;
+        System.out.print("a1[0][0] après modification de a2[0][0] : ") ;
+        System.out.println(a1[0][0]);
+        System.out.print("a2[0][0] après modification de a2[0][0] : ") ;
+        System.out.println(a2[0][0]);
+
+        a2[1] = new int[] {30,40};
+        System.out.print("{a1[1][0],a1[1][1]} après modification de a2[1] : {");
+        System.out.print(a1[1][0]);
+        System.out.print(" , ");
+        System.out.print(a1[1][1]);
+        System.out.println("}");
+        System.out.print("{a2[1][0],a2[1][1]} après modification de a2[1] : {");
+        System.out.print(a2[1][0]);
+        System.out.print(" , ");
+        System.out.print(a2[1][1]);
+        System.out.println("}");
+
+    }
+
     public static void main(String[] args){
-        //testInteger();
-        //testDouble();
-        completeLetter("Java",true);
-        //completeLetter("Java",false);
+        //Test Integer
+        System.out.println("Test Integer");
+        testInteger();
+
+        // Test Double
+        System.out.println("\nTest Double");
+        testDouble();
+
+        // Test completeLetter
+        completeLetter("Java",true); // À commenter pour tester avec un homme
+        //completeLetter("Java",false); // À décommenter pour tester avec un homme 
         completeLetter("lettre.txt", "Java",true);
         completeLetter("lettre", "Poo", false);
-        System.out.println("Tests ReadDouble");
+        System.out.println("\nTests ReadDouble");
         readDouble(3.14);
         System.out.println("\n"); // Pour avoir un saut de ligne après
         readDouble(1_234_567_890d);
@@ -293,11 +327,23 @@ public class TutorialObject {
         printDiv(listDivMap(-42));
 
         // Partie duplication
-        System.out.println("\n Partie duplication : ");
+        System.out.println("\nPartie duplication : ");
         System.out.println("testArray (sans clone) :");
         testArray();
         System.out.println("testArray (avec clone) :");
         testArrayWithClone();
+        System.out.println("\nPartie tableau de tableau");
+        testArray2();
+        System.out.println("Explications : ");
+        System.out.println("    - \"clone\" ne réalise qu'une copie de surface");
+        System.out.println("    - L'appel de \"a2 = a1.clone()\" copie les références des tableaux de a1 dans a2");
+        System.out.println("      a1[0] et a2[0] désignent alors le même tableau");
+        System.out.println("      Les opérations sur a2[0] affectent donc le contenu de a1[0]");
+        System.out.println("      a1[0][0] et a2[0][0] \"pointent\" vers le même emplacement mémoire");
+        System.out.println("    - Lorsqu'on modifie a2[1] avec \"a2[1] = new int[] {30,40}\",");
+        System.out.println("      on change directement le tableau a2[1]");
+        System.out.println("      a1[1] et a2[1] sont donc deux tableaux complètement différents.");
+        System.out.println("      Les opérations sur a2[1] n'affectent donc plus a1[1].");
    }
     
     
